@@ -1,0 +1,14 @@
+###
+POST  http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "username" : "oddessey",
+    "email" : "oddessey@123"
+}
+###
+
+###
+GET http://localhost:5000/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoib2RkZXNzZXkiLCJpYXQiOjE2ODg3NjE1NjIsImV4cCI6MTY4ODc2MTU5Mn0.FsxvYDRGvwCph5TnS31UlZz0dVcLK8Km9GgkyIIEvEI
+###
