@@ -5,7 +5,7 @@ require('dotenv').config()
 async function loginAuth(loginData) {
     const { username, password, email } = loginData
     if(!username || !password || !email ){
-        throw new Error({'status' : '402' , 'message' : 'i love you'})
+        throw new Error("fill all the details properly");
     }
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt)
@@ -19,7 +19,12 @@ async function loginAuth(loginData) {
         process.env.ACCESS_TOKEN_SECRET,
         {expiresIn : '30s'}
         )
-    return {accessToken : accessToken, username, hashedPassword, hashedEmail }
+    const refreshToken = jwt.sign(
+        {user},
+        process.env.REFRESH_TOKEN_SECRET,
+        {expiresIn : '1d'}
+        )
+    return {accessToken : accessToken, refreshToken : refreshToken }
 }
 
 function deleteUser(){

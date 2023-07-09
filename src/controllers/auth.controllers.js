@@ -4,6 +4,7 @@ const authServices = require('../services/auth.services');
 async function logIn(req, res, next) {
     try {
         const { body = {} } = req;
+        console.log(body);
         const loginAuthData = {
             username : body.username,
             password : body.password,
@@ -12,7 +13,9 @@ async function logIn(req, res, next) {
         const data = await authServices.loginAuth(loginAuthData)
         const userName =  data.username
         const accessToken = data.accessToken
-        return res.json({userName, accessToken});
+        const refreshToken = data.refreshToken
+        res.cookie('jwt', refreshToken, {httpOnly : true, maxAge : 24*60*60*1000});
+        return res.json({accessToken, refreshToken});
     } catch (error) {
         next(error);
     }
@@ -21,8 +24,8 @@ async function logIn(req, res, next) {
 async function logOut(req, res, next) {
     try{
         const logoutData = authServices.deleteUser()
-        console.log("ok controller")
-        return res.json({logoutData})
+        console.log("User deleted Succcessfully")
+        return res.json(logoutData)
     }catch(Error){
         next(Error)
     }
