@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
 const userRouter = require('./routes/user.routes');
 const authRouter = require('./routes/auth.routers');
+const httpErrors = require('http-errors');
 
 const { errorHandler } = require('./middlewares/error.middleware');
 

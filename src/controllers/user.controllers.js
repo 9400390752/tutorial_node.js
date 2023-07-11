@@ -5,6 +5,7 @@ const path = require('path');
 function getUser(req, res, next) {
     try {
         const response = userService.getUser()
+        console.log(response);
         return res.status(200).send(response);
 
     } catch (error) {

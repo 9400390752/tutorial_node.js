@@ -1,5 +1,5 @@
 const authServices = require('../services/auth.services');
-
+const httpErrors = require('http-errors');
 
 async function logIn(req, res, next) {
     try {
@@ -16,8 +16,9 @@ async function logIn(req, res, next) {
         const refreshToken = data.refreshToken
         res.cookie('jwt', refreshToken, {httpOnly : true, maxAge : 24*60*60*1000});
         return res.json({accessToken, refreshToken});
-    } catch (error) {
-        next(error);
+    } catch (err) {
+        const loginError = httpErrors(401,'login failed');
+        next(loginError);
     }
 }
 

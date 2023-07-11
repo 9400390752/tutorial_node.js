@@ -4,14 +4,14 @@ Content-Type: application/json
 
 {
     "username" : "oddessey",
-    "password" : "12342",
+    "password" : "sanj123",
     "email" : "oddessey@123"
 }
 ###
 
 ###
 GET http://localhost:5000/auth/logout
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9kZGVzc2V5IiwiaWF0IjoxNjg4OTMzNDAzLCJleHAiOjE2ODg5MzM0MzN9.shYRS2bamdeii4lxg8I50kegjPQ3R_iXz7RvgmU0F-4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoib2RkZXNzZXkiLCJpYXQiOjE2ODg5NzI2NTksImV4cCI6MTY4ODk3MjY4OX0.qaLFiDakX8GVAJLF62bPezdD4_aesRRYiJB75Yo0FbM
 ###
 
 GET http://localhost:5000/auth/refresh

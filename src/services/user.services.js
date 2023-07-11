@@ -34,12 +34,12 @@ function deleteUser(deletedData){
 }*/
 
 function getUser(){
-    const posts = {
+    const user = {
         username : "sanjai",
         password : "sanjai123",
         email : "sanjai@gmail"
     }
-    return {posts}
+    return {user}
 }
 
 

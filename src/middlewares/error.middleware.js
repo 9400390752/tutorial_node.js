@@ -1,11 +1,13 @@
-function errorHandler(Error, req, res, next) {
-    console.log(Error) 
-    res.status(Error.status || 407)
-    console.log(Error.status) 
+const httpErrors = require('http-errors');
+
+function errorHandler(err, req, res, next) {
+     
+    res.status(err.status || 407)
+    console.log(err.status) 
     res.send({
         error : {
-            status : Error.status,
-            message : Error.message
+            status : err.status,
+            message : err.message
         }
     })
 }
